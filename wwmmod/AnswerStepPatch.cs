@@ -164,3 +164,55 @@ public static class UIControllerUpdatePatch
         TTSFocusReflector.CheckAndUpdateTTS(__instance, isPyramidShowing);
     }
 }
+
+[HarmonyPatch(typeof(AnswerStep), "AnswerSelectionButton")]
+public static class AnswerStep_AnswerSelectionButton_Patch
+{
+    static bool Prefix()
+    {
+        if (PauseState.IsPaused)
+        {
+            return false; // Skip original method if paused
+        }
+        return true; // Execute original method
+    }
+}
+
+[HarmonyPatch(typeof(AnswerStep), "PyramidShowHideButton")]
+public static class AnswerStep_PyramidShowHideButton_Patch
+{
+    static bool Prefix()
+    {
+        if (PauseState.IsPaused)
+        {
+            return false;
+        }
+        return true;
+    }
+}
+
+[HarmonyPatch(typeof(AnswerStep), "LegendShowHideButton")]
+public static class AnswerStep_LegendShowHideButton_Patch
+{
+    static bool Prefix()
+    {
+        if (PauseState.IsPaused)
+        {
+            return false;
+        }
+        return true;
+    }
+}
+
+[HarmonyPatch(typeof(AnswerStep), "LifelineSelectionButton")]
+public static class AnswerStep_LifelineSelectionButton_Patch
+{
+    static bool Prefix()
+    {
+        if (PauseState.IsPaused)
+        {
+            return false;
+        }
+        return true;
+    }
+}

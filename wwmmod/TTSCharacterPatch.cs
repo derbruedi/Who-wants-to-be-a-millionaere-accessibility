@@ -31,7 +31,7 @@ public static class CharacterSelectionPatch
             // (ShowCurrentPlayer wird vom Spiel manchmal oft hintereinander aufgerufen)
             if (niceName != _lastSpokenCharacter)
             {
-                string ttsMessage = $"Charakter: {niceName}";
+                string ttsMessage = $"Character: {niceName}";
                 
                 MelonLogger.Msg($"[TTS-Char] {ttsMessage}");
                 TolkHelper.Speak(ttsMessage);

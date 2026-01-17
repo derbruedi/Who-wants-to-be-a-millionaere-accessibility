@@ -6,7 +6,7 @@ using UnityEngine;
 // ==========================================================
 // 🚨 CRITICAL: MelonInfo Metadata
 // ==========================================================
-[assembly: MelonInfo(typeof(wwmmod), "WWTBAM TTS Mod", "1.0.0", "Your Name")]
+[assembly: MelonInfo(typeof(wwmmod), "WWTBAM TTS Mod", "1.0.0", "Atlan")]
 [assembly: MelonGame("Microids", "Who Wants to Be a Millionaire? – New Edition")] 
 
 public class wwmmod : MelonMod
