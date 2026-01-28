@@ -21,7 +21,11 @@ public static class TolkHelper
         [DllImport(DllName, EntryPoint = "Tolk_Speak", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool Tolk_Speak([MarshalAs(UnmanagedType.LPWStr)] string text, bool interrupt);
-        
+
+        [DllImport(DllName, EntryPoint = "Tolk_Output", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        private static extern bool Tolk_Output([MarshalAs(UnmanagedType.LPWStr)] string text, bool interrupt);
+
         [DllImport(DllName, EntryPoint = "Tolk_IsSpeaking", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool Tolk_IsSpeaking();
@@ -67,15 +71,15 @@ public static class TolkHelper
         {
             if (string.IsNullOrEmpty(text))
                 return;
-                
+
             try
             {
-                // Versucht zu sprechen und unterbricht vorherige Sprache (true)
-                Tolk_Speak(text, true); 
+                // Gibt Text sowohl über Sprache als auch Braillezeile aus
+                Tolk_Output(text, true);
             }
             catch (Exception ex)
             {
-                MelonLogger.Warning($"Tolk: Fehler beim Sprechen des Textes '{text}'. Fehler: {ex.Message}");
+                MelonLogger.Warning($"Tolk: Fehler beim Ausgeben des Textes '{text}'. Fehler: {ex.Message}");
             }
         }
 
